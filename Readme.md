@@ -8,7 +8,7 @@ Simple docker image to forward ports using socat.
 Define the following environment variables to configure port-forwarding.
 In one definition, the three values ​​in the table below are separated by colons(:).
 
-`PORTFORWARD_{NAME}={LOCAL_PORT}:{REMOTE_HOST}:{REMOTE_PORT}`
+`FORWARD_{NAME}={LOCAL_PORT}:{REMOTE_HOST}:{REMOTE_PORT}`
 
 Variable | Description 
 -------- | ----------- 
