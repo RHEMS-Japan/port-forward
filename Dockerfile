@@ -1,6 +1,7 @@
 FROM alpine:3.15
 
-EXPOSE 80
+RUN apk update
+RUN apk add curl
 
 RUN echo "Installing base packages" \
 	&& apk add --update --no-cache \

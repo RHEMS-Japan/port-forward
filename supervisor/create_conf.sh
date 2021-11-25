@@ -1,5 +1,4 @@
 #!/bin/bash
-rm socat*.ini
 ENV_NAMEING_RULE=FORWARD
 
 echo -e '\n<START : CREATE CONFIG>'
@@ -22,7 +21,7 @@ do
     REMOTE_HOST=${PARAMS[1]}
     REMOTE_PORT=${PARAMS[2]}
 
-    FILENAME=socat$number.ini
+    FILENAME=/etc/supervisor.d/socat$number.ini
     TITLE=[program:socat$number]
     COMMAND=command="socat tcp-listen:$LOCAL_PORT,reuseaddr,fork tcp:$REMOTE_HOST:$REMOTE_PORT"
     echo -e $TITLE > $FILENAME
@@ -33,5 +32,3 @@ do
 done
 
 echo -e '\n<END : CREATE CONFIG>'
-
-mv ./*.ini /etc/supervisor.d/
