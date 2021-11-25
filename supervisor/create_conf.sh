@@ -5,15 +5,15 @@ echo -e '\n<START : CREATE CONFIG>'
 ENVS=(`(printenv | grep $ENV_NAMEING_RULE)`)
 for i in "${!ENVS[@]}"
 do
-    # FORWARD_01=80:80:127.0.0.1
+    # FORWARD_01=80:127.0.0.1:80
     echo "${ENVS[$i]}";
     number=$(printf "%02d\n" "${i}")
     # echo "number = $number"
 
-    # [FORWARD_01, 80:80:127.0.0.1]
+    # [FORWARD_01, 80:127.0.0.1:80]
     PARAMS=(${ENVS[$i]//=/ })
 
-    # [80, 80, 127.0.0.1]
+    # [80, 127.0.0.1, 80]
     PARAMS=(${PARAMS[1]//:/ })
     # echo "${PARAMS[@]}"
     
