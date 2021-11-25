@@ -12,9 +12,10 @@ In one definition, the three values ​​in the table below are separated by co
 
 Variable | Description 
 -------- | ----------- 
+NAME | If you include `FORWARD`, you can set it to any environment variable name you like.
+LOCAL_PORT | Port where container listens 
 REMOTE_HOST | IP or address of the host you want to forward traffic to 
 REMOTE_PORT | Port on remote host to forward traffic to 
-LOCAL_PORT | Port where container listens 
 
 The `socat` process within the container will listen by default to port 80, use `-p`docker
 flag to map the port of the local machine where it will listen to traffic to be forwarded.
