@@ -16,7 +16,7 @@ do
     # [80, 127.0.0.1, 80]
     PARAMS=(${PARAMS[1]//:/ })
     # echo "${PARAMS[@]}"
-    
+
     LOCAL_PORT=${PARAMS[0]}
     REMOTE_HOST=${PARAMS[1]}
     REMOTE_PORT=${PARAMS[2]}

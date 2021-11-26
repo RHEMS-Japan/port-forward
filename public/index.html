@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>RHEMS BADGES</title>
+  <link rel="icon" href="img/favicon.ico" />
+  <meta name="description" content="port forward from kubernetes cluster to internal server. you can forward to RDS,etc ">
+  <meta name="keyword" content="RHEMS PORT FORWARDER, k8s, port forward">
+  <style>
+    .button_wrapper{
+      text-align:center;
+    }
+    p.img_center{
+      text-align: center;
+    }
+    h1{
+      text-align: center;
+    }
+    h4{
+      text-align: center;
+    }
+    code {font-size: 100%;}
+    p.varifont { color: #0000ff;}
+		pre code {
+			background-color: #eee;
+			border: 1px solid #999;
+			display: block;
+			padding: 20px;
+      width: 90%;
+      height: 70%;
+      /* overflow: scroll; */
+      overflow-y: scroll;
+      margin: 0 auto;
+		}
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background-color: rgba(0,0,0,.1);
+        box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+  </style>
+
+</head>
+<body>
+  <div align="right">
+    <a href="https://github.com/RHEMS-Japan/port-forward" target="_blank">
+      <img src="https://badges.rhems-japan.com/api-get-badge.svg?user_id=SuXRjLryiXUnKMsqxKYMqFfpS6t2&organization=RHEMS-Japan&repo=port-foward&app=port-foward&branch=master" alt="">
+    </a>
+  </div>
+  <h1>RHEMS PROT FORWARDER</h1>
+  <p class="img_center">
+    <img src="img/logo.png" alt="logo" width="30%" height="30%">
+  </p>
+  <h4>support below</h4>
+  <div align="center">
+  <a href="https://kubernetes.io/" target="_blank"><img src="img/k8s.png" alt="github" width="30" height="30"></a>
+  <a href="https://kube-forwarder.pixelpoint.io/" target="_blank"><img src="img/kube-forwarder.png" alt="circleci" width="30" height="30"></a>
+  </div>
+
+  <pre><code>## sample k8s yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: proxies
+  namespace: proxy
+  labels:
+    app: proxies
+spec:
+  containers:
+    - name: port-forward
+      image: rhemsjapan/port-forward:latest
+      ports:
+        - containerPort: 6379 ##<font color="#000080">[prot1]</font>
+        - containerPort: 3306 ##<font color="#000080">[prot2]</font>
+      env:
+        - name: FORWARD_SAMPLE1 ## <font color="#000080">[prot1]</font>:<font color="#47B000">[server1]</font>:<font color="#47B000">[server port1]</font>
+          value: "6379:redis-server.com:6379"
+        - name: FORWARD_SAMPLE2 ## <font color="#000080">[prot2]</font>:<font color="#47B000">[server2]</font>:<font color="#47B000">[server port2]</font>
+          value: "3306:mysql-server.com:3306"
+</code></pre>
+
+  <pre><code>## how to accsess
+# kubectl port-forward [pod name] [local port]:[k8s port] -n [name space]
+
+$ kubectl port-forward proxies 3306:<font color="#000080">3306</font> -n proxy</code></pre>
+
+</body>
+</html>
