@@ -73,12 +73,12 @@ spec:
     - name: port-forward
       image: rhemsjapan/port-forward:latest
       ports:
-        - containerPort: 6379 ##<font color="#000080">[prot1]</font>
-        - containerPort: 3306 ##<font color="#000080">[prot2]</font>
+        - containerPort: 6379 ##<font color="#000080">[port1]</font>
+        - containerPort: 3306 ##<font color="#000080">[port2]</font>
       env:
-        - name: FORWARD_SAMPLE1 ## <font color="#000080">[prot1]</font>:<font color="#47B000">[server1]</font>:<font color="#47B000">[server port1]</font>
+        - name: FORWARD_SAMPLE1 ## <font color="#000080">[port1]</font>:<font color="#47B000">[server1]</font>:<font color="#47B000">[server port1]</font>
           value: "6379:redis-server.com:6379"
-        - name: FORWARD_SAMPLE2 ## <font color="#000080">[prot2]</font>:<font color="#47B000">[server2]</font>:<font color="#47B000">[server port2]</font>
+        - name: FORWARD_SAMPLE2 ## <font color="#000080">[port2]</font>:<font color="#47B000">[server2]</font>:<font color="#47B000">[server port2]</font>
           value: "3306:mysql-server.com:3306"
 </code></pre>
 
